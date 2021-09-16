@@ -1,7 +1,5 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">KarmAndroidLab</string>
     <string name="hello">hello_world</string>
-    <string name="button">it\'s a button</string>
-
 
 </resources>
