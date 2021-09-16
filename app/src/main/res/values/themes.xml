@@ -10,7 +10,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/my_statusbar</item>
         <!-- Customize your theme here. -->
-        <color name="my_text">#ED0A0A</color>
+
         <item name="android:textColor">@color/my_text</item>
 
     </style>
