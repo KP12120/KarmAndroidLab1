@@ -20,43 +20,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="90dp"
-        android:text="it's a button"/>
+        android:text="@string/button1" />
 
-    <EditText
-        android:id="@+id/myedittext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="I am an Edittext"
-        android:hint="Write something here"/>
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="a" />
+        android:text="@string/checkbox" />
     <CheckBox
         android:id="@+id/checkBox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="b" />
+        android:text="@string/checkbox" />
+
+    <EditText
+        android:id="@+id/myedittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/editmessage"
+        android:hint="@string/hinttext"/>
 
     <Switch
         android:id="@+id/switch1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Do you like coffee" />
+        android:text="@string/Switch2" />
 
     <RadioButton
         android:id="@+id/radioButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="agree" />
+        android:text="@string/agree" />
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/logoalgonquin" />
+        android:src="@drawable/algonquin" />
 
 
     <ImageButton
@@ -64,7 +65,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="0.5dp"
-        app:srcCompat="@drawable/app_icon" />
+        app:srcCompat="@drawable/app_icon"/>
+
+
+
 
 </LinearLayout>
 
