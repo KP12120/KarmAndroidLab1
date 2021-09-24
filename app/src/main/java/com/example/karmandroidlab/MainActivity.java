@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        //Imagebutton
+        //Image button
         ImageButton n = findViewById( R.id.myimagebutton );
         n.setOnClickListener(new View.OnClickListener() {
             @Override
