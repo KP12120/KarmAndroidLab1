@@ -1,0 +1,33 @@
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout android:orientation=\"vertical\"\r\n\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".MainActivity\">\r\n\r\n    <TextView\r\n        android:id=\"@+id/hellotext\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Hello World!\"/>\r\n\r\n\r\n    <Button\r\n        android:id=\"@+id/mybutton\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginBottom=\"90dp\"\r\n        android:text=\"@string/button1\" />\r\n\r\n\r\n    <CheckBox\r\n        android:id=\"@+id/checkBox\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"@string/checkbox\" />\r\n    <CheckBox\r\n        android:id=\"@+id/checkBox1\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"@string/checkbox\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/myedittext\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"@string/editmessage\"\r\n        android:hint=\"@string/hinttext\"/>\r\n\r\n    <Switch\r\n        android:id=\"@+id/switch1\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"@string/Switch\" />\r\n\r\n    <RadioButton\r\n        android:id=\"@+id/radioButton\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"@string/agree\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/logo\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:src=\"@drawable/algonquin\" />\r\n\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/myimagebutton\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:layout_marginBottom=\"0.5dp\"\r\n        app:srcCompat=\"@drawable/app_icon\"/>\r\n\r\n\r\n\r\n\r\n</LinearLayout>\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+--- a/app/src/main/res/layout/activity_main.xml	(revision f8db95fa431f1013412402bb35a8a86585f9819b)
++++ b/app/src/main/res/layout/activity_main.xml	(date 1633012690574)
+@@ -5,7 +5,8 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context=".MainActivity">
++    tools:context=".MainActivity"
++    xmlns:app="http://schemas.android.com/apk/res-auto">
+ 
+     <TextView
+         android:id="@+id/hellotext"
+@@ -61,10 +62,10 @@
+ 
+     <ImageButton
+         android:id="@+id/myimagebutton"
++        app:srcCompat="@drawable/app_icon"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+-        android:layout_marginBottom="0.5dp"
+-        app:srcCompat="@drawable/app_icon"/>
++        android:layout_marginBottom="0.5dp" />
+ 
+ 
+ 
