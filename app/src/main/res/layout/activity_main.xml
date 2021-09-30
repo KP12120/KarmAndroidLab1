@@ -1,74 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
 
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/hellotext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
-
+    tools:context=".MainActivity"
+    android:layout_marginTop="27dp"
+    android:layout_marginBottom="27dp"
+    android:layout_marginLeft="48dp"
+    android:layout_marginRight="48dp"
+    >
 
     <Button
-        android:id="@+id/mybutton"
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="90dp"
-        android:text="@string/button1" />
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/button_message1"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-    <CheckBox
-        android:id="@+id/checkBox"
+    <Button
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/checkbox" />
-    <CheckBox
-        android:id="@+id/checkBox1"
+        android:layout_marginStart="32dp"
+        android:text="@string/button_message2"
+        app:layout_constraintEnd_toStartOf="@+id/button7"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button1"
+        app:layout_constraintTop_toTopOf="@+id/button1" />
+
+    <Button
+        android:id="@+id/button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/checkbox" />
-
-    <EditText
-        android:id="@+id/myedittext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/editmessage"
-        android:hint="@string/hinttext"/>
-
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/Switch" />
-
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/agree" />
+        android:layout_marginStart="32dp"
+        android:text="@string/button_message3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintTop_toTopOf="@+id/button2" />
 
     <ImageView
-        android:id="@+id/logo"
+        android:id="@+id/flagview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/algonquin" />
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="536dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button1"
+        app:srcCompat="@drawable/flag1" />
 
+    <Switch
+        android:id="@+id/spin_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="@string/spin_message"
+        app:layout_constraintBottom_toBottomOf="@+id/flagview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/flagview" />
 
-    <ImageButton
-        android:id="@+id/myimagebutton"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="0.5dp"
-        app:srcCompat="@drawable/app_icon"/>
-
-
-
-
-</LinearLayout>
-
+</androidx.constraintlayout.widget.ConstraintLayout>
