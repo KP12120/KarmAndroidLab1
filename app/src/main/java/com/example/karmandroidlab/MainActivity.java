@@ -1,22 +1,19 @@
 package com.example.karmandroidlab;
 
-import static android.widget.CompoundButton.*;
-import static com.example.karmandroidlab.R.id.*;
+
+
+import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
+import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.CheckBox;
-import android.widget.Toast;
+
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,58 +23,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView topView = findViewById(hellotext);
-        EditText myedit = findViewById(myedittext);
-        //Button
-         Button b = findViewById(mybutton);
-         b.setOnClickListener(new View.OnClickListener(){
-             @Override
-             public void onClick(View view){
-                 topView.setText("Your edit text: " + myedit.getText());
-             }
-         });
-        CheckBox ch = findViewById(R.id.checkBox);
-        ch.setOnCheckedChangeListener( ( a, k) ->{
-            Toast.makeText(getApplicationContext(), "You Clicked on the Checkbox" , Toast.LENGTH_LONG).show();
-        });
+        ImageView imgView = findViewById(R.id.flagview);
+        Switch sw = findViewById(R.id.spin_switch);
 
-        //Switch
-        Switch w = findViewById(switch1);
-        w.setOnCheckedChangeListener( ( a, k) ->{
-            Toast.makeText(getApplicationContext(), "You Clicked on the Switch" , Toast.LENGTH_SHORT).show();
-        });
+        sw.setOnCheckedChangeListener((btn, isChecked) -> {
+            if (isChecked) {
+                RotateAnimation rotate = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                rotate.setDuration(5000);
+                rotate.setRepeatCount(Animation.INFINITE);
+                rotate.setInterpolator(new LinearInterpolator());
 
-
-        //Radiobutton
-        RadioButton r = findViewById(R.id.radioButton);
-        r.setOnCheckedChangeListener( ( a, k) ->{
-            Toast.makeText(getApplicationContext(), "You selected the RadioButton" , Toast.LENGTH_SHORT).show();
-        });
-
-
-       //Imageview
-        ImageView i = findViewById(R.id.logo);
-        i.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
+                imgView.startAnimation(rotate);
+            } else {
+                imgView.clearAnimation();
             }
         });
-        //Image button
-        ImageButton n = findViewById( R.id.myimagebutton );
-        n.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int width = n.getWidth();
-                int height = view.getHeight();
-                Toast.makeText(getApplicationContext(), "The width = " + width + " and height = " + height, Toast.LENGTH_LONG).show();
-            }
-        });
-
-
 
 
     }
-
 }
 
