@@ -1,13 +1,9 @@
 <resources>
     <string name="app_name">KarmAndroidLab</string>
     <string name="hello">hello_world</string>
-    <string name="button1" translatable="false">it\'s a button</string>
-    <string name="agree" translatable="false">agree</string>
-    <string name="checkbox" translatable="false">a</string>
-    <string name="checkbox1" translatable="false">k</string>
-    <string name="Switch" translatable="false">Do you like coffee</string>
-    <string name="Edittext1" translatable="false">I am an Edittext</string>
-    <string name="editmessage" translatable="false">edit</string>
-    <string name="hinttext" translatable="false">hint</string>
+    <string name="button1">Button1</string>
+    <string name="button2">Button2</string>
+    <string name="button3">Button3</string>
+
 
 </resources>
