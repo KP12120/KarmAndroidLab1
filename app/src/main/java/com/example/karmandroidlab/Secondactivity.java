@@ -77,7 +77,7 @@ public class Secondactivity extends AppCompatActivity {
         int age = fromPrevious.getIntExtra("Age", 0);
         TextView text1 = findViewById(R.id.textView3);
         String name = fromPrevious.getStringExtra("name");
-        text1.setText("    welcome Back" + " " +emailAddress );
+        text1.setText(" welcome Back" + " " +emailAddress );
         String psCode = fromPrevious.getStringExtra("PostalCode");
 
         SharedPreferences pre = getSharedPreferences("MyData", Context.MODE_PRIVATE);
