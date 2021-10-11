@@ -71,7 +71,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="70dp"
-        android:text="Welcome Back"
         app:layout_constraintEnd_toStartOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent" />
 

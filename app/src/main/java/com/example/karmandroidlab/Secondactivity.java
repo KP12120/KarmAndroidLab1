@@ -20,10 +20,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
 
 public class Secondactivity extends AppCompatActivity {
 
@@ -57,7 +60,7 @@ public class Secondactivity extends AppCompatActivity {
                             Log.w("IOException", "not got png");
                         }
 
-                        Log.i("Got bitmap", "image");
+                        Log.w("Got bitmap", "image");
                         profileImage.setImageBitmap( thumbnail );
                     }
                     else if (result.getResultCode() == Activity.RESULT_CANCELED)
@@ -72,7 +75,9 @@ public class Secondactivity extends AppCompatActivity {
         Intent fromPrevious = getIntent();
         String emailAddress = fromPrevious.getStringExtra("EmailAddress");
         int age = fromPrevious.getIntExtra("Age", 0);
-        String name = fromPrevious.getStringExtra("Name");
+        TextView text1 = findViewById(R.id.textView3);
+        String name = fromPrevious.getStringExtra("name");
+        text1.setText("    welcome Back" + " " +emailAddress );
         String psCode = fromPrevious.getStringExtra("PostalCode");
 
         SharedPreferences pre = getSharedPreferences("MyData", Context.MODE_PRIVATE);
@@ -87,6 +92,9 @@ public class Secondactivity extends AppCompatActivity {
         editor.putString("Name", name);
         editor.putString("PostalCode", psCode);
         editor.apply();
+
+
+
 
             EditText number = findViewById(R.id.editTextPhone);
             Button dialer = findViewById(R.id.button);
