@@ -1,0 +1,37 @@
+Index: app/src/androidTest/java/com/example/karmandroid/MainActivityTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.karmandroid;\r\n\r\n\r\nimport static androidx.test.espresso.Espresso.onView;\r\nimport static androidx.test.espresso.action.ViewActions.click;\r\nimport static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;\r\nimport static androidx.test.espresso.action.ViewActions.replaceText;\r\nimport static androidx.test.espresso.assertion.ViewAssertions.matches;\r\nimport static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;\r\nimport static androidx.test.espresso.matcher.ViewMatchers.withId;\r\nimport static androidx.test.espresso.matcher.ViewMatchers.withParent;\r\nimport static androidx.test.espresso.matcher.ViewMatchers.withText;\r\nimport static org.hamcrest.Matchers.allOf;\r\n\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.view.ViewParent;\r\n\r\nimport androidx.test.espresso.ViewInteraction;\r\nimport androidx.test.filters.LargeTest;\r\nimport androidx.test.rule.ActivityTestRule;\r\nimport androidx.test.runner.AndroidJUnit4;\r\n\r\nimport org.hamcrest.Description;\r\nimport org.hamcrest.Matcher;\r\nimport org.hamcrest.TypeSafeMatcher;\r\nimport org.junit.Rule;\r\nimport org.junit.Test;\r\nimport org.junit.runner.RunWith;\r\n\r\n@LargeTest\r\n@RunWith(AndroidJUnit4.class)\r\npublic class MainActivityTest {\r\n\r\n    @Rule\r\n    public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);\r\n\r\n    @Test\r\n    public void mainActivityTest() {\r\n\r\n        ViewInteraction appCompatEditText = onView(withId(R.id.editText));\r\n        appCompatEditText.perform(replaceText(\"12345\"), closeSoftKeyboard());\r\n\r\n        ViewInteraction materialButton = onView(allOf(withId(R.id.button), withText(\"submit\"),\r\n                         isDisplayed()));\r\n        materialButton.perform(click());\r\n\r\n        /*ViewInteraction textView = onView(withId(R.id.textView));\r\n        textView.check(matches(withText(\"You shall not pass\")));*/\r\n\r\n    }\r\n\r\n\r\n    @Test\r\n    public void testFindMissingUpperCase(){\r\n        ViewInteraction appCompatEditText = onView(withId(R.id.editText));\r\n        appCompatEditText.perform(replaceText(\"password123#$*\"));\r\n\r\n        ViewInteraction materialButton = onView(withId(R.id.button));\r\n        materialButton.perform(click());\r\n\r\n       /* ViewInteraction textview = onView(withId(R.id.textView));\r\n        textview.check(matches(withText(\"you shall not pass\")));*/\r\n    }\r\n\r\n\r\n    private static Matcher<View> childAtPosition(\r\n            final Matcher<View> parentMatcher, final int position) {\r\n\r\n        return new TypeSafeMatcher<View>() {\r\n            @Override\r\n            public void describeTo(Description description) {\r\n                description.appendText(\"Child at position \" + position + \" in parent \");\r\n                parentMatcher.describeTo(description);\r\n            }\r\n\r\n            @Override\r\n            public boolean matchesSafely(View view) {\r\n                ViewParent parent = view.getParent();\r\n                return parent instanceof ViewGroup && parentMatcher.matches(parent)\r\n                        && view.equals(((ViewGroup) parent).getChildAt(position));\r\n            }\r\n        };\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/androidTest/java/com/example/karmandroid/MainActivityTest.java b/app/src/androidTest/java/com/example/karmandroid/MainActivityTest.java
+--- a/app/src/androidTest/java/com/example/karmandroid/MainActivityTest.java	(revision 8ba67ad8a7f4c652fbc37a69ca800b48ba204b00)
++++ b/app/src/androidTest/java/com/example/karmandroid/MainActivityTest.java	(date 1636166654544)
+@@ -41,12 +41,11 @@
+         ViewInteraction appCompatEditText = onView(withId(R.id.editText));
+         appCompatEditText.perform(replaceText("12345"), closeSoftKeyboard());
+ 
+-        ViewInteraction materialButton = onView(allOf(withId(R.id.button), withText("submit"),
+-                         isDisplayed()));
++        ViewInteraction materialButton = onView(withId(R.id.button));
+         materialButton.perform(click());
+ 
+-        /*ViewInteraction textView = onView(withId(R.id.textView));
+-        textView.check(matches(withText("You shall not pass")));*/
++        ViewInteraction textView = onView(withId(R.id.textView));
++        textView.check(matches(withText("You shall not pass")));
+ 
+     }
+ 
+@@ -59,8 +58,8 @@
+         ViewInteraction materialButton = onView(withId(R.id.button));
+         materialButton.perform(click());
+ 
+-       /* ViewInteraction textview = onView(withId(R.id.textView));
+-        textview.check(matches(withText("you shall not pass")));*/
++        ViewInteraction textview = onView(withId(R.id.textView));
++        textview.check(matches(withText("You shall not pass!")));
+     }
+ 
+ 
