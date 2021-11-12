@@ -37,7 +37,7 @@ public class ChatRoom extends AppCompatActivity {
         t_view = findViewById(R.id.time);
 
 
-        myOpenHelper opener = new myOpenHelper();
+        myOpenHelper opener = new myOpenHelper(this);
         send_btn = findViewById(R.id.button2);
         send_btn.setOnClickListener(Click -> {
             String messageTyped = editText.getText().toString();
@@ -45,21 +45,18 @@ public class ChatRoom extends AppCompatActivity {
             Date time = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a", Locale.getDefault());
 
-            // convert the Date into String
             String currentDateandTime = sdf.format(time);
 
             ChatMessage thisMessage = new ChatMessage(messageTyped, SEND, currentDateandTime);
-            // adds the line in a row
-            messages.add(thisMessage);
 
-            // clear the text
+            messages.add(thisMessage);
             editText.setText("");
 
-            // Notify
+
             adt.notifyItemInserted(messages.size() - 1);
         });
 
-        // When Receive button is clicked
+
         receive_btn = findViewById(R.id.button2);
         receive_btn.setOnClickListener(Click -> {
             String messageTyped = editText.getText().toString();
@@ -67,18 +64,12 @@ public class ChatRoom extends AppCompatActivity {
             Date time = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a", Locale.getDefault());
 
-            // convert the Date into String
+
             String currentDateandTime = sdf.format(time);
 
             ChatMessage thisMessage = new ChatMessage(messageTyped, RECEIVE, currentDateandTime);
-
-            // adds the line in a row
             messages.add(thisMessage);
-
-            // clear the text
             editText.setText("");
-
-            // Notify
             adt.notifyItemInserted(messages.size() - 1);
 
         });
