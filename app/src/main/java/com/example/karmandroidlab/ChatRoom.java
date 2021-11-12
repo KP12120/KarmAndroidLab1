@@ -37,7 +37,8 @@ public class ChatRoom extends AppCompatActivity {
         t_view = findViewById(R.id.time);
 
 
-        send_btn = findViewById(R.id.button1);
+        myOpenHelper opener = new myOpenHelper();
+        send_btn = findViewById(R.id.button2);
         send_btn.setOnClickListener(Click -> {
             String messageTyped = editText.getText().toString();
             int SEND = 0;
