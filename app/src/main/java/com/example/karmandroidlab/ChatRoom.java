@@ -1,172 +1,46 @@
 package com.example.karmandroidlab;
+
+
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.snackbar.Snackbar;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 public class ChatRoom extends AppCompatActivity {
 
-    Button send_btn, receive_btn;
-    EditText editText;
-    RecyclerView chatList;
-    MyChatAdapter adt = new MyChatAdapter();
-    TextView view, t_view;
-    ArrayList <ChatMessage> messages = new ArrayList<>();
+    boolean isTablet = false;
+    MessageListFragment chatFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView( R.layout.chatlayout);
-        chatList = findViewById(R.id.myRecycler);
-        chatList.setAdapter( new MyChatAdapter() );
-        editText = findViewById(R.id.editText);
-        view = findViewById(R.id.message);
-        t_view = findViewById(R.id.time);
+        setContentView( R.layout.empty_layout );
 
+        isTablet = findViewById(R.id.detailsRoom) != null;
 
-        myOpenHelper opener = new myOpenHelper(this);
-        send_btn = findViewById(R.id.button2);
-        send_btn.setOnClickListener(Click -> {
-            String messageTyped = editText.getText().toString();
-            int SEND = 0;
-            Date time = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a", Locale.getDefault());
+        chatFragment = new MessageListFragment();
+        FragmentManager fMgr = getSupportFragmentManager();
+        FragmentTransaction tx = fMgr.beginTransaction();
 
-            String currentDateandTime = sdf.format(time);
-
-            ChatMessage thisMessage = new ChatMessage(messageTyped, SEND, currentDateandTime);
-
-            messages.add(thisMessage);
-            editText.setText("");
-
-
-            adt.notifyItemInserted(messages.size() - 1);
-        });
-
-
-        receive_btn = findViewById(R.id.button2);
-        receive_btn.setOnClickListener(Click -> {
-            String messageTyped = editText.getText().toString();
-            int RECEIVE = 1;
-            Date time = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a", Locale.getDefault());
-
-
-            String currentDateandTime = sdf.format(time);
-
-            ChatMessage thisMessage = new ChatMessage(messageTyped, RECEIVE, currentDateandTime);
-            messages.add(thisMessage);
-            editText.setText("");
-            adt.notifyItemInserted(messages.size() - 1);
-
-        });
-
-        chatList.setAdapter(adt);
-        chatList.setLayoutManager(new LinearLayoutManager(this));
+        tx.add(R.id.fragmentRoom, chatFragment);
+        tx.commit();
 
     }
-    private class MyChatAdapter extends RecyclerView.Adapter<MyRowViews>{
-        @Override
-        public MyRowViews onCreateViewHolder(ViewGroup parent, int viewType) {
 
-            LayoutInflater inflater = getLayoutInflater();
-            int LayoutID;
-            if (viewType == 0)
-                LayoutID = R.layout.sendmessage;
-            else
-                LayoutID = R.layout.recivemessage;
+    public void userClickedMessage(MessageListFragment.ChatMessage chatMessage, int position) {
 
-            View loadedRow = inflater.inflate(LayoutID, parent, false);
+        MessageDetailsFragment mdFragment = new MessageDetailsFragment(chatMessage, position);
 
-            MyRowViews initRow = new MyRowViews(loadedRow);
-            return new MyRowViews(loadedRow);
-        }
-
-
-        @Override
-        public void onBindViewHolder(MyRowViews holder, int position) {
-
-            holder.messageText.setText(messages.get(position).getMessage());
-            holder.timeText.setText(messages.get(position).getTimeSent());
-        }
-        public int getItemViewType(int position){
-            return messages.get(position).getSendOrReceive();
-        }
-        @Override
-        public int getItemCount() {
-            return messages.size();
+        if(isTablet)
+        {
+            getSupportFragmentManager().beginTransaction().replace(R.id.detailsRoom, mdFragment).commit();
+        }else
+        {
+            getSupportFragmentManager().beginTransaction().add(R.id.fragmentRoom, mdFragment).commit();
         }
     }
-    private class MyRowViews extends RecyclerView.ViewHolder{
-        TextView messageText;
-        TextView timeText;
 
-        public MyRowViews(View itemView) {
-            super(itemView);
-
-            itemView.setOnClickListener( click ->{
-
-                int position = getAbsoluteAdapterPosition();
-
-                MyRowViews newRow = adt.onCreateViewHolder(null, adt.getItemViewType(position));
-
-                AlertDialog.Builder builder = new AlertDialog.Builder( ChatRoom.this );
-                builder.setMessage("Do you want to delete the message:" + messageText.getText())
-                        .setTitle("Question:")
-                        .setNegativeButton("No",(dialog, cl) -> {})
-                        .setPositiveButton("Yes",(dialog, cl) -> {
-                            ChatMessage removedMessage = messages.get(position);
-                            messages.remove(position);
-                            adt.notifyItemRemoved(position);
-
-                            Snackbar.make(messageText, "You deleted message #"+ position, Snackbar.LENGTH_LONG)
-                                    .setAction("Undo", clk -> {
-
-                                        messages.add(position, removedMessage);
-                                        adt.notifyItemInserted(position);
-                                    })
-                                    .show();
-                        }).create().show();
-            });
-            messageText = itemView.findViewById(R.id.message);
-            timeText = itemView.findViewById(R.id.time);
-        }
-    }
-    public class ChatMessage{
-        String message;
-        int sendOrReceive;
-        String timeSent;
-
-
-        public ChatMessage(String message, int sendOrReceive, String timeSent) {
-            this.message = message;
-            this.sendOrReceive = sendOrReceive;
-            this.timeSent = timeSent;
-        }
-
-        public String getMessage() {
-            return message;
-        }
-
-        public int getSendOrReceive() {
-            return sendOrReceive;
-        }
-
-        public String getTimeSent() {
-            return timeSent;
-        }
+    public void notifyMessageDeleted(MessageListFragment.ChatMessage chosenMessage, int chosenPosition) {
+        chatFragment.notifyMessageDeleted(chosenMessage, chosenPosition);
     }
 }

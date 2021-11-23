@@ -3,14 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/karmp/AndroidStudioProjects/KarmAndroidLab/app/src/main/res/drawable/receive_image.xml" value="0.1796875" />
+        <entry key="..\:/Users/karmp/AndroidStudioProjects/KarmAndroidLab/app/src/main/res/layout-sw600dp/empty_layout.xml" value="0.10894808743169399" />
         <entry key="..\:/Users/karmp/AndroidStudioProjects/KarmAndroidLab/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/karmp/AndroidStudioProjects/KarmAndroidLab/app/src/main/res/layout/activity_second.xml" value="0.3" />
-        <entry key="..\:/Users/karmp/AndroidStudioProjects/KarmAndroidLab/app/src/main/res/layout/chatlayout.xml" value="0.25" />
-        <entry key="..\:/Users/karmp/AndroidStudioProjects/KarmAndroidLab/app/src/main/res/layout/receive_message.xml" value="0.15353260869565216" />
-        <entry key="..\:/Users/karmp/AndroidStudioProjects/KarmAndroidLab/app/src/main/res/layout/recivemessage.xml" value="0.16530797101449277" />
-        <entry key="..\:/Users/karmp/AndroidStudioProjects/KarmAndroidLab/app/src/main/res/layout/sendmessage.xml" value="0.16530797101449277" />
-        <entry key="..\:/Users/karmp/AndroidStudioProjects/KarmAndroidLab/app/src/main/res/layout/sent_message.xml" value="0.15353260869565216" />
+        <entry key="..\:/Users/karmp/AndroidStudioProjects/KarmAndroidLab/app/src/main/res/layout/details_layout.xml" value="0.14447463768115942" />
+        <entry key="..\:/Users/karmp/AndroidStudioProjects/KarmAndroidLab/app/src/main/res/layout/empty_layout.xml" value="0.14447463768115942" />
+        <entry key="..\:/Users/karmp/AndroidStudioProjects/KarmAndroidLab/app/src/main/res/layout/layout_sw600dp.xml" value="0.14447463768115942" />
+        <entry key="..\:/Users/karmp/AndroidStudioProjects/KarmAndroidLab/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1953125" />
       </map>
     </option>
   </component>
