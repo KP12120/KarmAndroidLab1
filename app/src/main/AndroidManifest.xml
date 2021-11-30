@@ -3,6 +3,7 @@
     package="com.example.karmandroidlab">
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-feature android:name="android.hardware.camera" android:required="true"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"

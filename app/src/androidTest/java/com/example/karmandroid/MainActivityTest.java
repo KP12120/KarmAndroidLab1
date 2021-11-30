@@ -21,8 +21,6 @@ import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
-import com.example.karmandroidlab.R;
-
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -37,33 +35,115 @@ public class MainActivityTest {
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
-    @Test
-    public void mainActivityTest() {
-
-        ViewInteraction appCompatEditText = onView(withId(R.id.editText));
-        appCompatEditText.perform(replaceText("12345"), closeSoftKeyboard());
-
-        ViewInteraction materialButton = onView(withId(R.id.button));
-        materialButton.perform(click());
-
-        ViewInteraction textView = onView(withId(R.id.textView));
-        textView.check(matches(withText("password is incorrect")));
-
-    }
-
-
+    /**
+     * Using @Test case to check if the user enters upper case letter or not
+     */
     @Test
     public void testFindMissingUpperCase(){
-        ViewInteraction appCompatEditText = onView(withId(R.id.editText));
-        appCompatEditText.perform(replaceText("password123#$*"));
 
-        ViewInteraction materialButton = onView(withId(R.id.button));
+        // Find the edittext
+        ViewInteraction appCompatEditText = onView(withId(R.id.cityTextField));
+        // Type the password 123#$*
+        appCompatEditText.perform(replaceText("123#$*"));
+
+        // Find the button
+        ViewInteraction materialButton = onView(withId(R.id.forecastButton));
+        // Click the button
         materialButton.perform(click());
 
-        ViewInteraction textview = onView(withId(R.id.textView));
-        textview.check(matches(withText("password is incorrect")));
+        // Find the textview
+        ViewInteraction textView = onView(withId(R.id.textView));
+        // Check the text
+        textView.check(matches(withText("You shall not pass!")));
     }
 
+    /**
+     * Using @Test case to check if the user enters lower case letter or not
+     */
+    @Test
+    public void testFindMissingLowerCase(){
+
+        // Find the edittext
+        ViewInteraction appCompatEditText = onView(withId(R.id.cityTextField));
+        // Type the password A@$*123
+        appCompatEditText.perform(replaceText("A@$*123"));
+
+        // Find the button
+        ViewInteraction materialButton = onView(withId(R.id.forecastButton));
+        // Click the button
+        materialButton.perform(click());
+
+        // Find the textview
+        ViewInteraction textView = onView(withId(R.id.textView));
+        // Check the text
+        textView.check(matches(withText("You shall not pass!")));
+    }
+
+    /**
+     * Using @Test case to check if the user enters digits or not
+     */
+    @Test
+    public void testFindMissingDigits(){
+
+        // Find the edittext
+        ViewInteraction appCompatEditText = onView(withId(R.id.cityTextField));
+        // Type the password Abc@$*
+        appCompatEditText.perform(replaceText("Abc@$*"));
+
+        // Find the button
+        ViewInteraction materialButton = onView(withId(R.id.forecastButton));
+        // Click the button
+        materialButton.perform(click());
+
+        // Find the textview
+        ViewInteraction textView = onView(withId(R.id.textView));
+        // Check the text
+        textView.check(matches(withText("You shall not pass!")));
+    }
+
+    /**
+     * Using @Test case to check if the user enters special characters or not
+     */
+    @Test
+    public void testFindMissingSpecialCharacters(){
+
+        // Find the edittext
+        ViewInteraction appCompatEditText = onView(withId(R.id.cityTextField));
+        // Type the password Abc123
+        appCompatEditText.perform(replaceText("Abc123"));
+
+        // Find the button
+        ViewInteraction materialButton = onView(withId(R.id.forecastButton));
+        // Click the button
+        materialButton.perform(click());
+
+        // Find the textview
+        ViewInteraction textView = onView(withId(R.id.textView));
+        // Check the text
+        textView.check(matches(withText("You shall not pass!")));
+    }
+
+    /**
+     * Using @Test case to check if the user enters special characters or not
+     */
+    @Test
+    public void testComplexity(){
+
+        // Find the edittext
+        ViewInteraction appCompatEditText = onView(withId(R.id.cityTextField));
+        // Type the password Abc@*45
+        appCompatEditText.perform(replaceText("Abc@*45"));
+
+        // Find the button
+        ViewInteraction materialButton = onView(withId(R.id.forecastButton));
+        // Click the button
+        materialButton.perform(click());
+
+        // Find the textview
+        ViewInteraction textView = onView(withId(R.id.textView));
+        // Check the text
+        textView.check(matches(withText("Your password is complex enough!")));
+    }
 
     private static Matcher<View> childAtPosition(
             final Matcher<View> parentMatcher, final int position) {
@@ -82,6 +162,5 @@ public class MainActivityTest {
                         && view.equals(((ViewGroup) parent).getChildAt(position));
             }
         };
-
     }
 }

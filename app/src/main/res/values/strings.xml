@@ -1,11 +1,7 @@
 <resources>
     <string name="app_name">KarmAndroidLab</string>
-    <string name="email">Enter Email</string>
-    <string name="email_new">Email</string>
-    <string name="password">Enter Password</string>
-    <string name="button_message">Submit</string>
-    <string name="button">Call Number</string>
-    <string name="button2">Click picture</string>
+    <string name="button_message">Get Forecast</string>
+
 
 
 </resources>
