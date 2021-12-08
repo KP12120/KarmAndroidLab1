@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
         Executor newThread = Executors.newSingleThreadExecutor();
         newThread.execute(() -> {
             try {
-
                 stringURL = "https://api.openweathermap.org/data/2.5/weather?q="
                         + URLEncoder.encode(cityName, "UTF-8")
                         + "&appid=b476bc2ada7cb4e2be34b65a3a61cd24&units=metric";
